@@ -1,16 +1,211 @@
 body{
-    margin:0; 
-    background-color: #00539CFF;
+    margin:0;
+    padding: 0; 
+    background-color: rgb(36, 41, 46);
+    
 }
+
 
 .calculatorTitle{
     display: flex;
-    align-items: center;
     font-weight: 900;
     justify-content: center;
     font-size:40px;
     background-color: #EEA47FFF;
     color: black;
-    height: 100%;
-    width: 100%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-variant: small-caps;
+    margin-top: 0%;
 }
+
+
+
+  .buttons{ 
+    display: grid;
+    grid-template-columns: repeat(4,2rem);
+    grid-template-rows: repeat(4,2rem);
+    border-radius: 0.5rem; 
+    color: black;
+    box-sizing: border-box;
+    zoom: 2;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+    margin-top:20px;
+  }
+
+  .clearButton{
+    background-color: rgb(255, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+    text-align: center;
+    width: 50px;
+    margin-left: 45px;
+  }
+
+  .container{
+    background-color: black;
+    width: 300px;
+    height: 500px;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  .displayBar{
+    width: 290px;
+    height: 100px;
+    border-radius: 0.5rem;
+    background-color: rgb(40, 46, 46);
+    margin-left: 2.5px;
+    color:  #EEA47FFF;
+    font-size: 45px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-left: 5px;
+  }
+
+  .centeringDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .numberNine{
+    background-color:  #EEA47FFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+  }
+  
+
+  .numberEight{
+    background-color:  #EEA47FFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+  }
+
+  .numberSeven{
+    background-color:  #EEA47FFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+  }
+
+  .divisionButton{
+    background-color:  #EEA47FFF;
+    color:red;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+    border-color: #00b3ff;
+  }
+
+  .numberFour{
+    background-color:  #EEA47FFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+  }
+
+  .numberFive{
+    background-color:  #EEA47FFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+  }
+
+  .numberSix{
+    background-color:  #EEA47FFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+  }
+
+  .multiplicationButton{
+    background-color:  #EEA47FFF;
+    color: red;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+    border-color: #00b3ff;
+  }
+
+  .numberOne{
+    background-color:  #EEA47FFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+  }
+
+  .numberTwo{
+    background-color:  #EEA47FFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+  }
+
+  .numberThree{
+    background-color:  #EEA47FFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+  }
+
+  .subtractionButton{
+    background-color:  #EEA47FFF;
+    color: red;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: #00b3ff;
+  }
+
+  .decimalPoint{
+    background-color:  #EEA47FFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: #00b3ff;
+  }
+
+  .zero{
+    background-color:  #EEA47FFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: whitesmoke;
+  }
+
+  .equalButton{
+    background-color:  #EEA47FFF;
+    color: red;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: #00b3ff;
+  }
+
+  .plusButton{
+    background-color:  #EEA47FFF;
+    color: red;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border-color: #00b3ff;
+  }
