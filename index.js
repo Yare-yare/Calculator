@@ -1,71 +1,101 @@
-const container = document.querySelector('.container')
+// Creating functions for the calculator 
+let add = (a, b) => {
+  return a + b;
+};
 
-/*
-//creating dom elements
-let cell = document.createElement('div')
-cell.classList.add('cell')
-container.appendChild(cell)
-*/ 
+let subtract = (a, b) => {
+  return a - b;
+};
 
-//Creating functions for the calculator aka - 'The Operators'
-let add = (a,b) =>{ 
-    return a + b
-}
+let multiply = (a, b) => {
+  return a * b;
+};
 
-let subract = (a,b) => {
-    return a-b
-}
+let divide = (a, b) => {
+  return a / b;
+};
 
-let multiply = (a,b) => {
-    return a*b
-}
-
-let divide = (a,b) => {
-    return (a / b)
-}
-
-console.log('Addition: '+ add(10,5),'Subtraction: ' + subract(10,5),'Multiplication: ' + multiply(10,5),'Division: ' + divide(10,5))
-
-//creating a new function called Operate that takes an operator and 2 numbers and calls one of the above function on the numbers
-let operate = (a, operator, b) => { 
-  if(operator === '+'){
-    return add(a,b)
+// Creating a new function called operate that takes an operator and 2 numbers and calls one of the above function on the numbers
+let operate = (a, operator, b) => {
+  if (operator === "+") {
+    return add(a, b);
+  } else if (operator === "-") {
+    return subtract(a, b);
+  } else if (operator === "*") {
+    return multiply(a, b);
+  } else if (operator === "/") {
+    return divide(a, b);
+  } else if (operator === ".") {
+    return parseFloat(`${a}.${b}`);
+  } else {
+    return `invalid operator: ${operator}`;
   }
+};
 
-  if(operator === '-'){
-    return subract(a,b)
-  }
+// Get displayBar
+const displayBar = document.querySelector(".displayBar");
 
-  if(operator === '*'){
-    return multiply(a,b)
-  }
+// Get buttons
+const buttons = [...document.querySelectorAll("button")];
 
-  if(operator === '/'){
-    return divide(a,b)
-  }
-} 
-    console.log(operate(4 ,"-", 2))
+// Array used to store operations
+let operations = [];
 
+buttons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    // If the button is a number
+    if (!isNaN(event.target.innerText)) {
+      // Checking to see if the operations array is empty or if the last item in the array is a number or not
+      // If any are true, the operator is pushed/added into the "operations" array
+      // I used typeOf to check if the last item was a number or not
+      if (operations.length === 0 || typeof operations[operations.length - 1] !== "number") {
+        operations.push(parseFloat(event.target.innerText));
+      } else {
+        let lastNumber = operations.pop(); //last number in the operation array which will be used to concatnate with newNumber
+        let newNumber = parseFloat(lastNumber.toString() + event.target.innerText); //Combining/concatnating the two numbers 
+        operations.push(newNumber);
+      }
 
-//get displayBar
-const displayBar = document.querySelector('.displayBar')
+      // Update the display
+      displayBar.innerText = operations.join(" "); //join concatnates all elements in an array
+    } else {
+      // If the button is an operator
+      if (event.target.innerText === "=") {
+        // Evaluate the operations array and display the result
+        let result = operations[0];
 
-//get buttons
-const buttons = [...document.querySelectorAll('button')] 
+        for (let i = 1; i < operations.length; i += 2) {
+          let operator = operations[i];
+          let number = operations[i + 1];
 
-//So over here, I am basically saying that for every button clicked (event.target.innerText), it's innerText becomes displayed. Hence the innerText for the displayBar becomes the innerText of the button that was clicked. 
-buttons.forEach((button => {
-  button.addEventListener('click',(event) => {
-    displayBar.innerText = event.target.innerText  
-  })
-}))
+          result = operate(result, operator, number);
+        }
 
+        displayBar.innerText = result.toString();
 
-/*
-//stores the variable
-let textStorer = (event) =>{
-  storedVariable = ""
-  storedVariable += event.target
-  return storedVariable
-}
-*/
+        // Reset the operations array
+        operations = [result];
+      } else {
+        // If it is any other operator besides the "=" add it to the operations array
+        operations.push(event.target.innerText);
+
+        // Update the display
+        displayBar.innerText = operations.join(" ");
+      }
+    }
+    if(displayBar.innerText.length < 13){
+      displayBar.style.fontSize = '43px';
+    }
+    else{
+      displayBar.style.fontSize = 'initial'
+    }
+  });
+});
+
+// Clear button
+const clearButton = document.querySelector(".clearButton");
+
+clearButton.addEventListener("click", () => {
+  operations = []; 
+  displayBar.innerText = "0";
+});
